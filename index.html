@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bluenet Schedule Extraction</title>
+	<meta charset="UTF-8">
+	<style>
+		svg 
+		{
+			border : solid 1px black;
+		}
+		
+		svg text 
+		{
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			fill : #101010;
+		}
+		
+		/*Hide all the text when printing*/
+		@media print
+		{    
+			.no-print, .no-print *
+			{
+				display: none !important;
+			}
+			
+			body, .container, .row
+			{
+				margin:0px;
+				padding:0px;
+			}
+		}
+	</style>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>	
+<body>
+
+<!-- Use snap.svg   http://snapsvg.io/  -->
+<script src="js/snap.svg-min.js"></script>
+<!-- Using bootstrap http://getbootstrap.com/  -->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<!-- main script -->
+<script src="js/main.js"></script>
+
+<div class="container">
+	<div class="row text-center no-print">
+		<h2>Bluenet Schedule Format Prettier</h2>
+	</div>
+	<div class="row no-print">
+		<div class="col-md-4">
+			<h3>How to use</h3>
+			<ol>
+				<li>Go to the main "New/Current Students" menu on Bluenet</li>
+				<li>Click on "My Class Schedule" and select the proper term</li>
+				<li>Once you see your schedule, right click and select "View Page Source"</li>
+				<li>Select-All on this page (Ctrl+A) and copy (Ctrl+C) paste (Ctrl+V) it into the text area on this page.</li>
+				<li>Click Submit to get a visual version of your schedule.</li>
+				<li>You can now print-screen or print this webpage.</li>
+			</ol>
+		</div>
+		<div class="col-md-8">
+			<form>
+				<p>Enter the page source of your schedule here.</p>
+				<textarea autofocus="1" cols="100" rows="8" id="raw_text"></textarea>
+				</p><input type="button" value="Submit" onclick="processText()"></input></p>
+			</form>
+		</div>
+	</div>
+	<div class="row text-center no-print">
+		Output:
+	</div>
+	<div class="row">
+		<!-- The output used by snap.svg-->
+		<svg width="1280" height="720" id="output_drawing"></svg>
+	</div>
+</div>
+<body>
+</html>
